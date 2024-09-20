@@ -22,26 +22,20 @@ There are two tools we will need for this workshop. If you do not already have t
 * Download additional sample datasets for MongoDB by pulling down this repo: https://github.com/neelabalan/mongodb-sample-dataset
   * We will specifically be using the sample_mflix movies dataset, but feel free to explore more of the sets. Each of these are provided by MongoDB and get used in MongoDB University courses.
 
-## Troubleshooting Notes:
-<details>
-  <summary>Need a fresh start with your mongo data?</summary>
+## Workshop Steps:
+### Script creation and test
+1. Get your docker up and running, use the command $ docker compose up --build
+2. Once you see it running in your Docker Desktop, enter the container and look for the tab 'Exec', click on it
+3. In there, you are using the container's terminal. Run the command $ ls  and verify the file copyMongoAtlasUnix.sh exists, the folder scripts and indexes exist too
+4. Run the command ./copyMongoAtlasUnix.sh and follow the steps required from the script
+5. Once you finish the steps, you will have the collection data in your local environment to test and play around with
+6. Go to the scripts folder and create a new script file with .js extension
+7. Go to our github and search for a script to copy/paste from ([github link](https://github.com/MerrillCorporation/MongoDBDevOps/tree/master/dbCleanUpScriptsJS))
+8. Once you copy/paste it the file you created in step 6, check the connection string, for local docker you will want a connection string like this one: "connectionString": "mongodb://<user>:<password>@localhost:27017"
+9. Replace and adapt your connection string, then replace the logic with your own
+10. Don't forget to add a before print statement of how your data looks before change, and a print statement of your data after, we want to know if all the documents you expect to be changed, actually changed
+11. Run the script! In Docker Desktop, in the terminal of your container, run the following command $ mongosh --nodb updateDescription.js
+12. Check the output statement is correct and it's what you expect
+13. Overview of a real case scenario from the MongoDB Team perspective
 
-  * Delete the mongo volumes in Docker Desktop
-    * Make sure you 🛑 _Stop_ 🛑 your docker containers first
-    *  _Delete_ the mongo containers `[mongo-node1, mongo-node2, mongo-node3]`
-      ![image](https://github.com/samifrank/mongodb-kafka-workshop/assets/84085490/a131d831-d295-4364-b887-7b9de2ec7b30)
-    * _Delete_ the mongo volumes
-    
-      ![image](https://github.com/samifrank/mongodb-kafka-workshop/assets/84085490/4c28d09b-d39d-4543-a155-78316c7189d8)
-</details>
-
-<details>
-  <summary>Docker containers not spinning up?</summary>
-
-  * If you are seeing an error message like the following:
-    ![image (2)](https://github.com/user-attachments/assets/de9a20bd-0db2-450f-99e0-4b4ba6977fba)
-
-  * Check if you are signed into Docker Desktop. If you are logged in - **log out**
-      
-</details>
-
+### Index creation and test
