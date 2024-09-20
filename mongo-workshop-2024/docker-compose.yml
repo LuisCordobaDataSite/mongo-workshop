@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  mongo6:
+    image: mongo:6.0.9
+    environment:
+      # these credentials are in the copyMongoAtlasUnix.sh
+      # if you want to change them, look for them in the script
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - ./data:/data/db
+      - ./scripts:/scripts
+      - ./indexes:/indexes
+      - ./copyMongoAtlasUnix.sh:/copyMongoAtlasUnix.sh
+    ports:
+      - "27017:27017"
