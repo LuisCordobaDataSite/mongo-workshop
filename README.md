@@ -39,3 +39,12 @@ There are two tools we will need for this workshop. If you do not already have t
 13. Overview of a real case scenario from the MongoDB Team perspective
 
 ### Index creation and test
+Requirements: Localize a Database and a collection to use create the index. Get a query to test your index with.
+1. Get your docker up and running, use the command $ docker compose up --build
+2. Once you see it running in your Docker Desktop, enter the container and look for the tab 'Exec', click on it
+3. In there, you are using the container's terminal. Run the command $ ls  and verify the file copyMongoAtlasUnix.sh exists, the folder scripts and indexes exist too
+4. Run the command ./copyMongoAtlasUnix.sh and follow the steps required from the script
+5. Once you finish the steps, you will have the collection data in your local environment to test and play around with
+6. First create a query you will need and test it to see if it uses an colscan or indexscan
+7. Create an index for that query
+8. Check if the index is being used
