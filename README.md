@@ -25,17 +25,15 @@ There are two tools we will need for this workshop. If you do not already have t
 1. Get your docker up and running, use the command $ docker compose up --build
 2. Once you see it running in your Docker Desktop, enter the container and look for the tab 'Exec', click on it
 3. In there, you are using the container's terminal. Run the command $ ls  and verify the file copyMongoAtlasUnix.sh exists, the folder scripts and indexes exist too ([original file is here](https://github.com/MerrillCorporation/MongoDBDevOps/blob/master/mongoUtility/copyDataToLocal/copyMongoAtlasUnix.sh))
-4. Run the command ./copyMongoAtlasUnix.sh and follow the steps required from the script
+4. Run the command ./copyMongoAtlasUnix.sh and follow the steps required from the script, info needed: dev, cluster_analytics, tagDB and newsfeed
 5. Once you finish the steps, you will have the collection data in your local environment to test and play around with (we already have updateDescription.js as a guide)
-6. Go to the scripts folder and create a new script file with .js extension
-7. Go to our github and copy/paste the following script ([github link](https://github.com/MerrillCorporation/MongoDBDevOps/blob/master/dbCleanUpScriptsJS/atlas/backfillAllowDownloadMultipleFilesFeature.js))
-8. Once you copy/paste it the file you created in step 6, check the connection string, for local docker you will want a connection string like this one: "connectionString": "mongodb://<user>:<password>@localhost:27017"
-9. Replace and adapt your connection string (the user and password are not your datasite credentials, it should be the docker mongo credentials, you can find them in the docker-compose.yml for this workshop), then replace the logic with your own
-10. Don't forget to add a before print statement of how your data looks before change, and a print statement of your data after, we want to know if all the documents you expect to be changed, actually changed
-11. Make a find query in your mongo terminal, you want to know how many records are going to be hit before hand so you know what to expect when the script runs.
-12. Run the script! In Docker Desktop, in the terminal of your container, run the following command $ mongosh --nodb updateDescription.js
-13. Check the output statement is correct and it's what you expect
-14. Overview of a real case scenario from the MongoDB Team perspective
+6. Check the connection string, for local docker you will need a connection string like this one: "connectionString": "mongodb://*mongoadmin*:*root*@localhost:27017"
+7. Replace and adapt your connection string (the user and password are not your datasite credentials, it should be the docker mongo credentials, you can find them in the docker-compose.yml for this workshop)
+8. Make a find query in your mongo terminal, you want to know how many records are going to be hit before hand so you know what to expect when the script runs.
+9. Go to Compass, connect to your localhost:27017, open tagDB, you can make the query here and see the total count of results.
+9. Run the script! In Docker Desktop, in the terminal of your container, run the following command $ mongosh --nodb updateDescription.js
+10. Check the output statement is correct and it's what you expect
+11. Overview of a real case scenario from the MongoDB Team perspective
 
 ### Index creation and test
 Requirements: Localize a Database and a collection to use so we can create the index. Get a query to test your index with.
