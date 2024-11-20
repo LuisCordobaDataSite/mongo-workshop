@@ -1,0 +1,22 @@
+db.newsfeed.find({scrapeDate: ISODate("2024-05-03T06:30:16.400Z")}).explain()
+db.newsfeed.find({campaignId: 19020825}).explain()
+db.newsfeed.dropIndex('campaignId_1')
+db.newsfeed.find({campaignId: 19020825}).explain()
+db.newsfeed.find({campaignId: 19020825, scrapeDate: ISODate("2024-05-03T06:30:16.400Z")}).explain()
+db.newsfeed.createIndex({campaignId: 1, scrapeDate: 1})
+db.newsfeed.find({scrapeDate: ISODate("2024-05-03T06:30:16.400Z"), campaignId: 19020825}).explain()
+db.newsfeed.find({scrapeDate: ISODate("2024-05-03T06:30:16.400Z", campaignId: 19020825)}).explain()
+db.newsfeed.find({campaignId: 19020825, scrapeDate: ISODate("2024-05-03T06:30:16.400Z")}).explain()
+db.newsfeed.find()
+db.newsfeed.find({campaignId: 19020825}).explain()
+db.newsfeed.createIndex({campaignId: 1})
+db.newsfeed.find({campaignId: 19020825}).explain()
+db.newsfeed.find().explain()
+db.newsfeed.find()
+db.newsfeed.getIndexes()
+db.newsfeed.dropIndexes()
+db.newsfeed.getIndexes()
+show collections
+ls
+use tagDB
+show dbs

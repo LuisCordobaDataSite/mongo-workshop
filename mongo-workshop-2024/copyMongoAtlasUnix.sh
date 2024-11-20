@@ -309,7 +309,7 @@ for CURRENT_DATABASE in "${DATABASES[@]}"; do
     echo
     echo "!!! hurray dumping complete, now restoring the data to your localhost"
     echo
-    mongorestore -h localhost:$PORT -d $CURRENT_DATABASE --drop $BASEDIR/tmp/$CURRENT_DATABASE/ -u mongoadmin -p root
+    mongorestore -h localhost:$PORT -d $CURRENT_DATABASE   --drop $BASEDIR/tmp/$CURRENT_DATABASE/
     echo
     echo "!! restore completed"
 done
@@ -323,7 +323,7 @@ mongodump --uri "mongodb+srv://$HOSTNAME/$DATABASE?readPreference=secondaryPrefe
 echo
 echo "!!! hurray dumping complete, now restoring the data to your localhost"
 echo
-mongorestore -h localhost:$PORT -d $DATABASE --drop $BASEDIR/tmp/$DATABASE/ -u mongoadmin -p root
+mongorestore -h localhost:$PORT -d $DATABASE --drop $BASEDIR/tmp/$DATABASE/
 echo
 echo "!! restore completed"
 }
@@ -336,10 +336,7 @@ mongodump --uri "mongodb+srv://$HOSTNAME/$DATABASE?readPreference=secondaryPrefe
 echo
 echo "!!! hurray dumping complete, now restoring the data to your localhost"
 echo
-# if you use mongodb locally, use the line below
-# mongorestore -h localhost:$PORT -d $DATABASE -c $COLLECTION --drop $BASEDIR/tmp/$DATABASE/$COLLECTION.bson -u mongoadmin -p root
-# if you use mongo in docker, use the line below with your corresponding credentials
-mongorestore --uri "mongodb://mongoadmin:root@localhost:$PORT/$DATABASE?authSource=admin" -d $DATABASE -c $COLLECTION --drop $BASEDIR/tmp/$DATABASE/$COLLECTION.bson
+mongorestore -h localhost:$PORT -d $DATABASE -c $COLLECTION --drop $BASEDIR/tmp/$DATABASE/$COLLECTION.bson
 echo
 echo "!! restore completed"
 }
