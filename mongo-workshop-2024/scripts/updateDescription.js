@@ -24,20 +24,21 @@ let connectToDb = function () {
 
 let initiateScript = function () {
     connectToDb();
-    // updateWidgetTypes();
+    updateMany();
     // updateWithBulkWrite();
-    updateWithUpdateOne();
+    // updateWithUpdateOne();
 }
 
-const subjectToChange = 'modified subject2';
+const subjectToChange = 'modified subject1';
 
-let updateWidgetTypes = function () {
+let updateMany = function () {
     let totalAmountOfDocuments = db.newsfeed.find({}).count();
     // We update everything that matches the selection
     let result = db.newsfeed.updateMany({}, {$set: {subject: subjectToChange}});
 
     print('Documents found: ' + totalAmountOfDocuments);
     print('Documents modified: ' + result.modifiedCount);
+    print('Script successfully executed? ' + (totalAmountOfDocuments === result.modifiedCount));
 }
 
 let updateWithBulkWrite = function () {
@@ -57,6 +58,7 @@ let updateWithBulkWrite = function () {
 
     print('Documents found: ' + totalAmountOfDocuments);
     print('Documents modified: ' + result.modifiedCount);
+    print('Script successfully executed? ' + (totalAmountOfDocuments === result.modifiedCount));
 }
 
 let updateWithUpdateOne = function () {
@@ -75,6 +77,7 @@ let updateWithUpdateOne = function () {
 
     print('Documents found: ' + totalAmountOfDocuments);
     print('Documents modified: ' + documentModifiedCount);
+    print('Script successfully executed? ' + (totalAmountOfDocuments === documentModifiedCount));
 }
 
 initiateScript();
